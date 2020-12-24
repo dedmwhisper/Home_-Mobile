@@ -1,0 +1,495 @@
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+*{
+  transition: 0.25s;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+body, html {
+  /* scroll-behavior: smooth; */
+  height: 100%;
+}
+.sidenav::-webkit-scrollbar {
+  display: none;
+}
+a {
+  color: #3e3947;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* 主選單 */
+/* sidemenu */
+.home{
+  z-index: 2;
+  position: fixed;
+  cursor: pointer;
+  top: 15px;
+  left: 25px;
+  background-color: #f0f0f0;
+  padding: 13px 10px;
+  border-radius: 50%;
+}
+.home:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 10px rgb(255,255,255));
+  
+}
+.menu{
+  z-index: 2;
+  position: fixed;
+  cursor: pointer;
+  top: 15px;
+  right: 25px;
+  background-color: #999999;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+.menu:hover{
+  background-color: rgb(68, 68, 68);
+}
+.navecontent{
+visibility: hidden;
+transition: 0.5s;
+display: none;
+}
+@media (max-width: 1199.98px) { 
+  .sidenav{
+    height: 100%;
+  }
+}
+.sidenav {
+  
+  width: 0; 
+  position: fixed; 
+  z-index: 3; 
+  top: 0;
+  left: 0;
+  background-color: #111111; 
+  overflow: auto; 
+  padding-top: 5px; 
+  transition: 0.5s; 
+}
+.sidenav > .row{
+  margin-right: 0 !important;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.sidenav .closebtn {
+z-index: 999;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+a.profile{
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 1%;
+  transition: 0.3s ease-in-out;
+  color: #fff;
+}
+.profilepic{
+  cursor: pointer;
+  filter:brightness(.5);
+}
+.profilepic:hover ~ span.protext{
+  margin-top: 180px;
+}
+.profilepic:hover{
+  filter:brightness(1);
+  transform: rotate(-15deg);
+}
+.protext{
+  cursor: pointer;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  font-size: 3vmax;
+  font-weight: 900;
+  color: #fff;
+}
+.protext:hover{
+  display: none;
+}
+span.protext:hover ~ img.profilepic{
+filter: brightness(1);
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+/*側邊導覽列*/
+.cd-section {
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.cd-scroll-down {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: 38px;
+  height: 44px;
+  background: url("../img/cd-arrow-bottom.svg") no-repeat center center;
+}
+/* No Touch devices */
+.cd-nav-trigger {
+  display: none;
+}
+.cd-nav{
+	z-index: 999;
+}
+.no-touch #cd-vertical-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.no-touch #cd-vertical-nav li {
+  text-align: right;
+}
+.no-touch #cd-vertical-nav a {
+  display: inline-block;
+  /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.no-touch #cd-vertical-nav a:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.no-touch #cd-vertical-nav a span {
+  float: right;
+  /* display: inline-block; */
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -o-transform: scale(0.6);
+  transform: scale(0.6);
+}
+.no-touch #cd-vertical-nav a:hover span {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.no-touch #cd-vertical-nav a:hover .cd-label {
+  opacity: 1;
+}
+.no-touch #cd-vertical-nav a.is-selected .cd-dot {
+  background-color: white;
+}
+.no-touch #cd-vertical-nav .cd-dot {
+  position: relative;
+  /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #d88683;
+  -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
+  -moz-transition: -moz-transform 0.2s, background-color 0.5s;
+  transition: transform 0.2s, background-color 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.no-touch #cd-vertical-nav .cd-label {
+  position: relative;
+  margin-right: 10px;
+  padding: .4em .5em;
+  color: #1A1A1A;
+  background-color: #fff;
+  font-size: 14px;
+  font-size: 0.875rem;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+/* banner */
+:root {
+  --marquee-width: 100vw;
+  --marquee-height: 100vh;
+  /* --marquee-elements: 12; */ /* defined with JavaScript */
+  --marquee-elements-displayed: 5;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed)*1.7);
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+}
+
+.marquee {
+  width: var(--marquee-width);
+  height: var(--marquee-height);
+  background-image: url(../images/banner_bg.png);
+  background-size: contain;
+  color: #eee;
+  overflow: hidden;
+  position: relative;
+}
+.marquee:before, .marquee:after {
+  position: absolute;
+  top: 0;
+  width: 10rem;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+.marquee:before {
+  left: 0;
+  background: linear-gradient(to right, #111 0%, transparent 100%);
+}
+.marquee:after {
+  right: 0;
+  background: linear-gradient(to left, #111 0%, transparent 100%);
+}
+.marquee-content {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  animation: scrolling var(--marquee-animation-duration) linear infinite;
+}
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+}
+.marquee-content li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  flex-shrink: 0;
+  width: var(--marquee-element-width);
+  max-height: 100%;
+  font-size: calc(var(--marquee-height)*3/4); /* 5rem; */
+  white-space: nowrap;
+}
+
+.marquee-content li img {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+
+  html { font-size: 12px; }
+  :root {
+    --marquee-width: 100vw;
+    /* --marquee-height: 16vh; */
+    --marquee-elements-displayed: 3;
+  }
+  .marquee:before, .marquee:after { width: 5rem; }
+}
+
+
+/*滾動視差區域*/
+/*廟語喃喃*/
+/* .people_bg1{
+  background-image: url(../images/1.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.people_bg2{
+  background-image: url(../images/2.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.people_bg3{
+  background-image: url(../images/3.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.people_bg4{
+  background-image: url(../images/4.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.people_bg5{
+  background-image: url(../images/5.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+.people_bg6{
+  background-image: url(../images/6.png);
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+.people{
+  visibility: hidden;
+} */
+.title{
+	position: absolute;
+	font-size: 6vmax;
+	bottom: 10%;
+	right: 120px;
+	color: #F78942;
+	background-color: #000000;
+	font-weight: 600;
+	padding: 3px;
+	padding-bottom: 5px;
+}
+.title2{
+	position: absolute;
+	font-size: 5.5vmax;
+	bottom: 50px;
+	right: 30px;
+	color: #F78942;
+	background-color: #000000;
+	font-weight: 600;
+	padding: 3px;
+	padding-bottom: 5px;
+}
+.vicky_t{
+	color:#3C7BE2;
+}
+.joy_t{
+	color:#F55C75;
+}
+.kelly_t{
+	color:#905CB0;
+}
+.emma_t{
+	color:#5954BC;
+}
+.beryl_t{
+	color: #56C968;
+}
+#section2 {
+  background-image: url("../images/bg1.png");
+  background-attachment: fixed;
+}
+#section3 {
+	background-image: url("../images/bg2.png");
+}
+#section4 {
+	background-image: url("../images/bg3.png");
+}
+#section5 {
+	background-image: url("../images/bg4.png");
+}
+#section6 {
+	background-image: url("../images/bg5.png");
+}
+#section7 {
+	background-image: url("../images/bg6.png");
+}
+.dialog{
+  position: absolute;
+  left: 50%;
+  top: 20%;
+}
+/*gototop*/
+#gtp{
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 2; /* Make sure it does not overlap */
+  cursor: pointer;
+}
+#gtp:hover{
+animation: gtp 0.5s ease infinite alternate;
+}
+@keyframes gtp {
+from {
+  transform: translateY(0px);
+  transform: scale(1);
+}
+to {
+  transform: translateY(-8px);
+  transform: scale(1.1);
+}
+}
+
+/* loading */
+.loading {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease;
+  z-index: 200 !important;
+}
+.loading-finish {
+  opacity: 0;
+  pointer-events: none;
+}
+.temple1 {
+  width: 200px;
+/*  height: 100px;*/
+  animation: loading 1s ease infinite alternate;
+}
+
+@keyframes loading {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(15px);
+  }
+}
